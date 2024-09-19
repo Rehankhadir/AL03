@@ -1,0 +1,23 @@
+<div class="container">
+  <button class="btn btn-primary w-25 btnstyle" [disabled]="btnHide" (click)="startProgressBar()">Start</button>
+</div>
+<div [hidden]="isPrgsBar">
+  <div class="row col-12 prgBar">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div class="progress" [hidden]="isInprocess"> 
+      <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="progressValue" [style.width.%]="progressValue"  aria-valuemin="0" aria-valuemax="100">{{progressValue}}%</div>
+      </div> 
+    </div>
+    <div class="col-1">
+      <span [hidden]="isDownArrow"  (click)="downArClick()" class="bi bi-arrow-down-square-fill iconDown"></span>
+      <span [hidden]="isUpArrow" (click)="upArClick()" class="bi bi-arrow-up-square-fill iconUp"></span>
+    </div>
+    </div>
+</div>
+<div class="successMsg" *ngIf="progressValue === 100;">
+  <i class="bi bi-check-lg"></i> Migration applied Successfully
+</div>
+<router-outlet></router-outlet>
+
+
